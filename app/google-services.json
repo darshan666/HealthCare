@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509368241675",
+    "project_id": "hcare-db2fd",
+    "storage_bucket": "hcare-db2fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509368241675:android:e84880f57688d18f01810e",
+        "android_client_info": {
+          "package_name": "com.example.hc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509368241675-t0kgc9i73jjlo0pqhv9mn51oe8sh1jqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsduUGmMiN6gtKmbHQ_Om0-iJki8aaWfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509368241675-t0kgc9i73jjlo0pqhv9mn51oe8sh1jqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
