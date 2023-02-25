@@ -16,9 +16,6 @@
         android:theme="@style/Theme.Hc"
         tools:targetApi="31">
         <activity
-            android:name=".chatbox.Patient"
-            android:exported="false" />
-        <activity
             android:name=".SearchPage"
             android:exported="false" />
         <activity
@@ -45,14 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".firebase.MessagingServices"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
 
         <meta-data
             android:name="preloaded_fonts"

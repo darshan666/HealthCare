@@ -35,7 +35,7 @@ public class ProfilePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_page);
         logout = findViewById(R.id.logout);
-        txtEmail = findViewById(R.id.username_);
+        txtEmail = findViewById(R.id.emailtext);
         firebaseAuth = FirebaseAuth.getInstance();
 
         logout.setOnClickListener(new View.OnClickListener() {
