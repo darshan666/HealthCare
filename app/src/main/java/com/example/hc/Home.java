@@ -5,11 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -44,7 +40,7 @@ public class Home extends AppCompatActivity {
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
         //image click listener
-        imageSlider.setItemClickListener(new ItemClickListener() {
+        imageSlider.setItemClickListener(new  ItemClickListener() {
             @Override
             public void onItemSelected(int i) {
                 Toast.makeText(Home.this, "Something Clicked", Toast.LENGTH_SHORT).show();
@@ -70,8 +66,9 @@ public class Home extends AppCompatActivity {
 
                     case R.id.search:
 
-                        Intent intent1 = new Intent(getApplicationContext(),SearchPage.class);
+                        Intent intent1 = new Intent(getApplicationContext(),Dashboad.class);
                         startActivity(intent1);
+                        //finish();
 
                         Toast.makeText(Home.this, "Search Page", Toast.LENGTH_SHORT).show();
                         break;

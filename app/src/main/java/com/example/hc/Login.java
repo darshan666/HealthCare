@@ -27,11 +27,25 @@ public class Login extends AppCompatActivity {
     Button forgetPassword,login,register;
     TextInputLayout username,password;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            Intent intent = new Intent(Login.this, Home.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.login);
+
+
 
         forgetPassword = findViewById(R.id.forgetpassword);
         login = findViewById(R.id.loginBtn);

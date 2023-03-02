@@ -1,17 +1,16 @@
 package com.example.hc;
 
 public class DataStore {
-    String name,username,phoneno;
+    String name,username,phoneno,imageUrl;
 
     public DataStore() {
     }
 
-    public DataStore(String name, String username,String phoneno) {
+    public DataStore(String name, String username,String phoneno,String imageUrl) {
         this.name = name;
         this.username = username;
-
         this.phoneno = phoneno;
-
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -37,6 +36,14 @@ public class DataStore {
 
     public void setPhoneno(String phoneno) {
         this.phoneno = phoneno;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 
