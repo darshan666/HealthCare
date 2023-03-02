@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class Register extends AppCompatActivity {
 
     Button register,login;
@@ -92,19 +94,29 @@ public class Register extends AppCompatActivity {
                                             if(task.isSuccessful())
                                             {
                                                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                                String userid = firebaseUser.getUid();
 
                                                 //enter data to real time database
-                                                reference = FirebaseDatabase.getInstance().getReference("Registered Users");
-                                                DataStore dataStore = new DataStore(Fullname_,Username_,Mobile_);
-                                                reference.child(firebaseUser.getUid()).setValue(dataStore).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                reference = FirebaseDatabase.getInstance().getReference("Registered Users").child(userid);
+                                                HashMap<String,String> hashMap = new HashMap<>();
+                                                hashMap.put("id",userid);
+                                                hashMap.put("username",Username_);
+                                                hashMap.put("name",Fullname_);
+                                                hashMap.put("mobile",Mobile_);
+                                                hashMap.put("imageUrl","default");
+                                               // DataStore dataStore = new DataStore(Fullname_,Username_,Mobile_,"default");
+                                                reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
 
-                                                        Toast.makeText(getApplicationContext(), "Register SuccessFully", Toast.LENGTH_SHORT).show();
-
-                                                        Intent intent = new Intent(getApplicationContext(),Home.class);
-                                                        startActivity(intent);
-                                                        finish();
+                                                        if(task.isSuccessful())
+                                                        {
+                                                            Toast.makeText(getApplicationContext(), "Register SuccessFully", Toast.LENGTH_SHORT).show();
+                                                            Intent intent = new Intent(getApplicationContext(),Home.class);
+                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }
                                                     }
                                                 });
                                             }

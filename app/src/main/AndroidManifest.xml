@@ -16,6 +16,15 @@
         android:theme="@style/Theme.Hc"
         tools:targetApi="31">
         <activity
+            android:name=".Chatbox.DoctorChatPage"
+            android:exported="false" />
+        <activity
+            android:name=".PatientChat"
+            android:exported="false" />
+        <activity
+            android:name=".patientchat"
+            android:exported="false" />
+        <activity
             android:name=".SearchPage"
             android:exported="false" />
         <activity
