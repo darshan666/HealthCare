@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import com.example.hc.Model.*;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,11 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Register extends AppCompatActivity {
 
     Button register,login;
-    TextInputLayout fullname,username,email,phone,password;
-
+    TextInputLayout fullname,email,phone,password;
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth firebaseAuth;
     DatabaseReference reference;
@@ -39,7 +41,6 @@ public class Register extends AppCompatActivity {
         login = findViewById(R.id.loginOnClick);
 
         fullname = findViewById(R.id.fullname);
-        username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
@@ -58,7 +59,6 @@ public class Register extends AppCompatActivity {
 
     public void registerOnClickButton(View view) {
         String Fullname = fullname.getEditText().getText().toString();
-        String Username = username.getEditText().getText().toString();
         String Email = email.getEditText().getText().toString();
         String Mobile = phone.getEditText().getText().toString();
         String Password = password.getEditText().getText().toString();
@@ -66,9 +66,6 @@ public class Register extends AppCompatActivity {
         if(!Fullname.isEmpty()){
             fullname.setError(null);
             fullname.setErrorEnabled(false);
-            if(!Username.isEmpty()){
-                username.setError(null);
-                username.setErrorEnabled(false);
                 if(!Email.isEmpty()){
                     email.setError(null);
                     email.setErrorEnabled(false);
@@ -81,10 +78,10 @@ public class Register extends AppCompatActivity {
                                 if(!Email.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")){
 
                                     String Fullname_ = fullname.getEditText().getText().toString();
-                                    String Username_ = username.getEditText().getText().toString();
                                     String Email_ = email.getEditText().getText().toString();
                                     String Mobile_ = phone.getEditText().getText().toString();
                                     String Password_ = password.getEditText().getText().toString();
+
 
                                     firebaseAuth = FirebaseAuth.getInstance();
                                     //create user
@@ -93,29 +90,34 @@ public class Register extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if(task.isSuccessful())
                                             {
-                                                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                                                String userid = firebaseUser.getUid();
+                                                String userid = task.getResult().getUser().getUid();
+
+                                                Users users = new Users(userid,Fullname_,Mobile_,Email_,Password_,"",0);
+
+
 
                                                 //enter data to real time database
-                                                reference = FirebaseDatabase.getInstance().getReference("Registered Users").child(userid);
-                                                HashMap<String,String> hashMap = new HashMap<>();
-                                                hashMap.put("id",userid);
-                                                hashMap.put("username",Username_);
-                                                hashMap.put("name",Fullname_);
-                                                hashMap.put("mobile",Mobile_);
-                                                hashMap.put("imageUrl","default");
+                                                reference = FirebaseDatabase.getInstance().getReference("User").child(userid);
+//                                                HashMap<String,String> hashMap = new HashMap<>();
+//                                                hashMap.put("id",userid);
+//                                                hashMap.put("name",Fullname_);
+//                                                hashMap.put("mobile",Mobile_);
+//                                                hashMap.put("email",Email_);
+//                                                hashMap.put("password",Password_);
+//                                                hashMap.put("imageUrl","default");
+
                                                // DataStore dataStore = new DataStore(Fullname_,Username_,Mobile_,"default");
-                                                reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                reference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
 
                                                         if(task.isSuccessful())
                                                         {
                                                             Toast.makeText(getApplicationContext(), "Register SuccessFully", Toast.LENGTH_SHORT).show();
-                                                            Intent intent = new Intent(getApplicationContext(),Home.class);
-                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                            startActivity(intent);
-                                                            finish();
+//                                                            Intent intent = new Intent(getApplicationContext(),Home.class);
+//                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                                            startActivity(intent);
+//                                                            finish();
                                                         }
                                                     }
                                                 });
@@ -142,10 +144,6 @@ public class Register extends AppCompatActivity {
                 else {
                     email.setError("Please enter Email.");
                 }
-            }
-            else {
-                username.setError("Please enter Username.");
-            }
         }
         else {
             fullname.setError("Please enter fullName.");

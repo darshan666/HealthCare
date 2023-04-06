@@ -8,16 +8,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.hc.Patient.PatientDoctorList;
+
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import com.example.hc.appointment.*;
 
 public class Home extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class Home extends AppCompatActivity {
 
 
     // BottomBar Buttons
-        nav = findViewById(R.id.bottomNavbar);
+        nav = findViewById(R.id.bottomNavbarss);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -66,7 +67,7 @@ public class Home extends AppCompatActivity {
 
                     case R.id.search:
 
-                        Intent intent1 = new Intent(getApplicationContext(),Dashboad.class);
+                        Intent intent1 = new Intent(getApplicationContext(), PatientDoctorList.class);
                         startActivity(intent1);
                         //finish();
 
@@ -75,7 +76,7 @@ public class Home extends AppCompatActivity {
 
                     case R.id.list:
 
-                        Intent intent2 = new Intent(getApplicationContext(),AppointmentPage.class);
+                        Intent intent2 = new Intent(getApplicationContext(), AppointmentList.class);
                         startActivity(intent2);
 
                         Toast.makeText(Home.this, "Appoitment Page", Toast.LENGTH_SHORT).show();
@@ -95,17 +96,17 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(currentUser != null){
-//            txtEmail.setText(currentUser.getEmail());
-        }
-        else {
-            startActivity(new Intent(this,Login.class));
-            finish();
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//
+//        if(currentUser != null){
+////            txtEmail.setText(currentUser.getEmail());
+//        }
+//        else {
+//            startActivity(new Intent(this,Login.class));
+//            finish();
+//        }
+//    }
 }

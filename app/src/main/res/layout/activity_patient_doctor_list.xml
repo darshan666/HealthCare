@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Patient.PatientDoctorList">
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:background="@drawable/appbar_radius"-->
+<!--        android:gravity="center"-->
+<!--        android:src="@drawable/logo"-->
+<!--        android:text="Doctor List"-->
+<!--        android:textColor="#ffff"-->
+<!--        android:textSize="20dp" />-->
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/PDSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/search_view"
+        app:queryHint="Search Doctor Here......"
+        app:iconifiedByDefault="false">
+
+    </androidx.appcompat.widget.SearchView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp" />
+
+</RelativeLayout>

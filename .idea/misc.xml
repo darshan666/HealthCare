@@ -3,16 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/drawable/bg.xml" value="0.1765" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/drawable/search_view.xml" value="0.1285" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_add_doctor.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_appointment_list.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_book_appointment.xml" value="0.264" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_chat_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_doctor_homepage.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_doctor_list.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_edit_doctor.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_edit_doctor2.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_feedback.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_patient_chat.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_patient_doctor_list.xml" value="0.1" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_rozarpay_payment.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/activity_update_profile.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/appointment_page.xml" value="0.25" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/appointmentlist_cardview.xml" value="0.176" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/doctor_bottom_sheet_dialog.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/doctorlistcardview.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/forget_password.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/home.xml" value="0.20092592592592592" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/login.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/pdoctorlist.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/profile_page.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/register.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/search_page.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/layout/toolbar.xml" value="0.1875" />
+        <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/menu/admin_bottmbar.xml" value="0.25" />
         <entry key="..\:/Users/Radhe/Desktop/Androidproject/healthcare/app/src/main/res/menu/menu.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/Radhe/Desktop/hc/app/src/main/res/drawable/appbar_radius.xml" value="0.1185" />
         <entry key="..\:/Users/Radhe/Desktop/hc/app/src/main/res/drawable/bottombar_radius.xml" value="0.1315" />
