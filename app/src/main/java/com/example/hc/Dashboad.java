@@ -34,26 +34,26 @@ public class Dashboad extends AppCompatActivity {
         username = findViewById(R.id.username1);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Registered Users").child(firebaseUser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
 
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                UserDatas userdata = snapshot.getValue(UserDatas.class);
-//                username.setText(userdata.getName());
-//                if(userdata.getImageUrl().equals("default")){
-//                    profileImg.setImageResource(R.mipmap.ic_launcher);
-//                }
-//                else {
-//                    Glide.with(Dashboad.this).load(userdata.getImageUrl()).into(profileImg);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserDatas userdata = snapshot.getValue(UserDatas.class);
+                username.setText(userdata.getName());
+                if(userdata.getImageUrl().equals("default")){
+                    profileImg.setImageResource(R.mipmap.ic_launcher);
+                }
+                else {
+                    Glide.with(Dashboad.this).load(userdata.getImageUrl()).into(profileImg);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
