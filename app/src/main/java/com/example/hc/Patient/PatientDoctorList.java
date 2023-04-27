@@ -54,27 +54,24 @@ public class PatientDoctorList extends AppCompatActivity implements PatientDocto
         });
 
 
-        /////
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 doctorListDataArrayList.clear();
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    String docId=postSnapshot.child("Id").getValue(String.class);
                     String name=postSnapshot.child("Fullname").getValue(String.class);
                     String city=postSnapshot.child("City").getValue(String.class);
                     String desc=postSnapshot.child("Describation").getValue(String.class);
-
                     String fees=postSnapshot.child("Fees").getValue(String.class);
-                    String fullName=postSnapshot.child("Fullname").getValue(String.class);
+                    String location = postSnapshot.child("Location").getValue(String.class);
                     String PhoneNumber=postSnapshot.child("PhoneNumber").getValue(String.class);
-
                     String Pincode=postSnapshot.child("Pincode").getValue(String.class);
                     String Schedule=postSnapshot.child("Schedule").getValue(String.class);
                     String Specialist=postSnapshot.child("Specialist").getValue(String.class);
                     String State=postSnapshot.child("State").getValue(String.class);
-                    String id=postSnapshot.child("id").getValue(String.class);
                     String profileUrl=postSnapshot.child("profileUrl").getValue(String.class);
-                    doctorListDataArrayList.add(new Doctor(name,desc,Specialist,fees,profileUrl));
+                    doctorListDataArrayList.add(new Doctor(docId,name,Specialist,desc,PhoneNumber,location,city, State, Pincode, fees, Schedule, profileUrl));
 
                 }
                 setData(doctorListDataArrayList);

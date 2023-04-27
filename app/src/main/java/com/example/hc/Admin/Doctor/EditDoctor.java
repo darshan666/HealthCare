@@ -101,7 +101,7 @@ public class EditDoctor extends AppCompatActivity {
 
                             Fullname = snapshot1.getFullname().toString();
                             Specialist = snapshot1.getSpecialist().toString();
-                            Description = snapshot1.getDescribation().toString();
+                            Description = snapshot1.getDescription().toString();
                             Phone = snapshot1.getPhone().toString();
                             Location = snapshot1.getLocation().toString();
                             City = snapshot1.getCity().toString();

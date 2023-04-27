@@ -1,6 +1,7 @@
 package com.example.hc.Admin.Doctor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,11 @@ public  class DoctorListAdaptor extends RecyclerView.Adapter<DoctorListAdaptor.M
     ArrayList<Doctor> doctorListData;
     Context context;
     private int lastPos =0;
-    DoctorListClickInterface doctorListClickInterface;
 
 
-    public DoctorListAdaptor(ArrayList<Doctor> doctorListData, Context context, DoctorListClickInterface doctorListClickInterface) {
+    public DoctorListAdaptor(ArrayList<Doctor> doctorListData, Context context) {
         this.doctorListData = doctorListData;
         this.context = context;
-        this.doctorListClickInterface = doctorListClickInterface;
     }
 
     @NonNull
@@ -45,13 +44,25 @@ public  class DoctorListAdaptor extends RecyclerView.Adapter<DoctorListAdaptor.M
         holder.name.setText(doctorData.getFullname());
         holder.specialist.setText(doctorData.getSpecialist());
         holder.fees.setText("Rs."+doctorData.getFees());
+
         Picasso.get().load(doctorData.getImageUrl()).into(holder.doctorImg);
         setAnimation(holder.itemView,Position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int aa = v.getId();
-                doctorListClickInterface.onDoctorClick(lastPos);
+                Intent intent =new Intent(context,DoctorDetails.class);
+                intent.putExtra("docId",doctorData.getDocId());
+                intent.putExtra("DoctorImg",doctorData.getImageUrl());
+                intent.putExtra("Fullname",doctorData.getFullname());
+                intent.putExtra("Specialist",doctorData.getSpecialist());
+                intent.putExtra("Description",doctorData.getDescription());
+                intent.putExtra("Fees",doctorData.getFees());
+                intent.putExtra("Location",doctorData.getLocation());
+                intent.putExtra("City",doctorData.getCity());
+                intent.putExtra("State",doctorData.getState());
+                intent.putExtra("Schedule",doctorData.getSchedule());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
     }
@@ -83,10 +94,5 @@ public  class DoctorListAdaptor extends RecyclerView.Adapter<DoctorListAdaptor.M
             fees = itemView.findViewById(R.id.txtFees);
             doctorImg = itemView.findViewById(R.id.imgProfiles);
         }
-    }
-
-    public interface DoctorListClickInterface{
-
-        void onDoctorClick(int position );
     }
 }

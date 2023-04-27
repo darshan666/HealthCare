@@ -1,27 +1,27 @@
 package com.example.hc.Model;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
-@IgnoreExtraProperties
 public class Doctor {
-    String fullname,specialist,Describation,phone,location,city,state,pincode,fees,schedule,imageUrl;
+
+    String docId,fullname,specialist,Description,phone,location,city,state,pincode,fees,schedule,imageUrl;
 
     public Doctor() {
     }
 
-    public Doctor(String fullname, String describation, String specialist,String fees, String imageUrl) {
+    public Doctor(String docId,String fullname, String description, String specialist,String fees, String imageUrl) {
         this.fullname = fullname;
-        Describation = describation;
+        this.docId = docId;
+        Description = description;
         this.specialist = specialist;
         this.phone = phone;
         this.fees = fees;
         this.imageUrl = imageUrl;
     }
 
-    public Doctor(String fullname, String specialist, String describation, String phone, String location, String city, String state, String pincode, String fees, String schedule, String imageUrl) {
+    public Doctor(String docId,String fullname, String specialist, String description, String phone, String location, String city, String state, String pincode, String fees, String schedule, String imageUrl) {
+        this.docId = docId;
         this.fullname = fullname;
         this.specialist = specialist;
-        Describation = describation;
+        Description = description;
         this.phone = phone;
         this.location = location;
         this.city = city;
@@ -30,6 +30,14 @@ public class Doctor {
         this.fees = fees;
         this.schedule = schedule;
         this.imageUrl = imageUrl;
+    }
+
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
     }
 
     public String getFullname() {
@@ -48,12 +56,12 @@ public class Doctor {
         this.specialist = specialist;
     }
 
-    public String getDescribation() {
-        return Describation;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDescribation(String describation) {
-        Describation = describation;
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public String getPhone() {
@@ -119,4 +127,8 @@ public class Doctor {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+
+
+
 }
