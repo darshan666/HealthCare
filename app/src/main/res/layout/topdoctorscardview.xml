@@ -10,12 +10,11 @@
 
     <LinearLayout
         android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_height="100dp"
+        android:layout_margin="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/PDImage"
+            android:id="@+id/TDImg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/logo" />
@@ -32,19 +31,19 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="Name: "
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/PDFullname"
+            android:id="@+id/TDName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="Name"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -59,39 +58,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Specialist: "
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/PDSpecilist"
+            android:id="@+id/TDSpecialist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Specialist"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:layout_marginStart="120dp">
-        <TextView
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Appointment Charge: "
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <TextView
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/PDFees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -1,5 +1,5 @@
 package com.example.hc.Admin;
-
+import com.example.hc.appointment.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,7 +49,7 @@ public class AdminDashboard extends AppCompatActivity {
 
                     case R.id.list:
 
-                        Intent intent2 = new Intent(getApplicationContext(), AdminDashboard.class);
+                        Intent intent2 = new Intent(getApplicationContext(), AppointmentList.class);
                         startActivity(intent2);
 
                         Toast.makeText(AdminDashboard.this, "Appoitment Page", Toast.LENGTH_SHORT).show();

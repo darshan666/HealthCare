@@ -10,9 +10,10 @@ public class AppointmentData {
     private String State;
     private String Pincode;
     private String AppointmentReason;
-    private String AppointmentDateTimes;
+    private String AppointmentDate;
+    private String AppointmentTime;
 
-    public AppointmentData(String fullname, String DOb, String gender, String phone, String address, String city, String state, String pincode, String appointmentReason, String appointmentDateTimes) {
+    public AppointmentData(String fullname, String DOb, String gender, String phone, String address, String city, String state, String pincode, String appointmentReason, String appointmentDate,String appointmentTime) {
         Fullname = fullname;
         DOB = DOb;
         Gender = gender;
@@ -22,7 +23,8 @@ public class AppointmentData {
         State = state;
         Pincode = pincode;
         AppointmentReason = appointmentReason;
-        AppointmentDateTimes = appointmentDateTimes;
+        AppointmentDate = appointmentDate;
+        AppointmentTime = appointmentTime;
     }
 
     public AppointmentData() {
@@ -100,11 +102,19 @@ public class AppointmentData {
         AppointmentReason = appointmentReason;
     }
 
-    public String getAppointmentDateTimes() {
-        return AppointmentDateTimes;
+    public String getAppointmentDate() {
+        return AppointmentDate;
     }
 
-    public void setAppointmentDateTimes(String appointmentDateTimes) {
-        AppointmentDateTimes = appointmentDateTimes;
+    public void setAppointmentDate(String appointmentDate) {
+        AppointmentDate = appointmentDate;
+    }
+
+    public String getAppointmentTime() {
+        return AppointmentTime;
+    }
+
+    public void setAppointmentTime(String appointmentTime) {
+        AppointmentTime = appointmentTime;
     }
 }

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/baloo"
-            android:text="Appointment Booking"
+            android:text="Edit Appointment"
             android:textSize="20dp"
             android:textColor="@color/bgcolor"
             android:layout_gravity="center"/>
@@ -29,12 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:id="@+id/pFullname"
+            android:id="@+id/EdFullname"
             android:hint="fullname"
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
-<!--            app:startIconDrawable="@drawable/ic_baseline_person_24"-->
+            <!--            app:startIconDrawable="@drawable/ic_baseline_person_24"-->
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/DobLayout"
+            android:id="@+id/EdDobLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="DateOfBirth"
@@ -55,7 +55,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/dataOfBirth"
+                android:id="@+id/EddataOfBirth"
                 android:layout_height="wrap_content"
                 />
 
@@ -63,7 +63,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/gender"
+            android:id="@+id/Edgender"
             android:hint="Gender"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
@@ -77,7 +77,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/phoneNo"
+            android:id="@+id/EdphoneNo"
             android:hint="Phone Number"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
@@ -91,66 +91,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/address"
-            android:hint="Address"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/city"
-            android:hint="City"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/state"
-            android:hint="State"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/pincode"
-            android:hint="Pincode"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/reason"
+            android:id="@+id/Edreason"
             android:hint="Appointment Describe "
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
@@ -164,7 +105,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/AppointmentDateL"
+            android:id="@+id/EdAppointmentDateL"
             android:hint="Appointment Date"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_baseline_date_range_24"
@@ -172,7 +113,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/AppointmentDate"
+                android:id="@+id/EdAppointmentDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date"/>
@@ -183,7 +124,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/AppointmentTimeL"
+            android:id="@+id/EdAppointmentTimeL"
             android:hint="Appointment Time"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_baseline_date_range_24"
@@ -191,21 +132,83 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/AppointmentTime"
+                android:id="@+id/EdAppointmentTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-<!--        android:onClick="submitOnClickButton"-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Edaddress"
+            android:hint="Street"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Edcity"
+            android:hint="City"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Edpincode"
+            android:hint="Pincode"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Edstate"
+            android:hint="State"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--        android:onClick="submitOnClickButton"-->
         <Button
-            android:id="@+id/submitAppointment"
+            android:id="@+id/EdEditAppointment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Submit Appointment" />
+            android:text="Update Appointment" />
     </LinearLayout>
 
 
