@@ -7,7 +7,7 @@ public class PaymentModel {
     Integer Amount;
     String PaymentDate;
 
-    public PaymentModel(String paymentId, String pateintId, String aptId, String paymentDate, String type, int amount, String status) {
+    public PaymentModel(String paymentId, String pateintId, String aptId, String paymentDate, String type, Integer amount, String status) {
         PaymentId = paymentId;
         PateintId = pateintId;
         AptId = aptId;
@@ -60,7 +60,7 @@ public class PaymentModel {
         Type = type;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return Amount;
     }
 

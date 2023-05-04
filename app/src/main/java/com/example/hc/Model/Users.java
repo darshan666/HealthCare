@@ -7,7 +7,8 @@ public class Users {
     private String Email;
     private String Password;
     private String Img;
-    private int userType;
+    private Integer userType;
+
 
     public Users() {
     }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hc.Model.Doctor;
+import com.example.hc.Model.Users;
 import com.example.hc.R;
 import com.example.hc.appointment.BookAppointment;
 import com.example.hc.profile.UpdateProfile;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,11 +59,11 @@ public class AddDoctor extends AppCompatActivity {
 
     CircleImageView doctorProfile;
     Button addDoctor;
-    TextInputLayout fullname,specialist,Describation,phone,location,city,state,pincode,fees,schedule;
+    TextInputLayout fullname,specialist ,email,Describation,phone,location,city,state,pincode,fees,schedule;
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage storage;
     DatabaseReference reference;
-    private CustomFloatAttributes myCalendar;
+    FirebaseAuth firebaseAuth;
     Uri profileUri;
     private String myUri="";
 
@@ -73,6 +75,7 @@ public class AddDoctor extends AppCompatActivity {
         doctorProfile = findViewById(R.id.doctorProfile);
         fullname = findViewById(R.id.DFullname);
         specialist = findViewById(R.id.specialist);
+        email = findViewById(R.id.DEmail);
         Describation = findViewById(R.id.Describation);
         phone = findViewById(R.id.Phono);
         location = findViewById(R.id.Address);
@@ -88,7 +91,7 @@ public class AddDoctor extends AppCompatActivity {
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = firebaseDatabase.getReference("Doctor");
+        reference = firebaseDatabase.getReference("User");
         storage = FirebaseStorage.getInstance();
 
         doctorProfile.setOnClickListener(new View.OnClickListener() {
@@ -115,13 +118,98 @@ public class AddDoctor extends AppCompatActivity {
         }
     }
 
+
+    public void AddDoctorOnClickButton(View view) {
+        String ProfileUrl = doctorProfile.toString();
+        String Fullname = fullname.getEditText().getText().toString();
+        String Email = email.getEditText().getText().toString();
+        String Specialist = specialist.getEditText().getText().toString();
+        String Describations =Describation.getEditText().getText().toString();
+        String Phone = phone.getEditText().getText().toString();
+        String Location = location.getEditText().getText().toString();
+        String City = city.getEditText().getText().toString();
+        String State = state.getEditText().getText().toString();
+        String Pincode = pincode.getEditText().getText().toString();
+        String Fees = fees.getEditText().getText().toString();
+        String Schedule =schedule.getEditText().getText().toString();
+
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseAuth.createUserWithEmailAndPassword(Email,"Doctor123").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                String userid = task.getResult().getUser().getUid();
+                firebaseDatabase = FirebaseDatabase.getInstance();
+               DatabaseReference reference1 = firebaseDatabase.getReference("Doctor");
+                HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("id",userid);
+                hashMap.put("Fullname",Fullname);
+                hashMap.put("Specialist",Specialist);
+                hashMap.put("Describation",Describations);
+                hashMap.put("PhoneNumber",Phone);
+                hashMap.put("Location",Location);
+                hashMap.put("City",City);
+                hashMap.put("State",State);
+                hashMap.put("Pincode",Pincode);
+                hashMap.put("Fees",Fees);
+                hashMap.put("Schedule",Schedule);
+                hashMap.put("profileUrl",myUri);
+                hashMap.put("userType",2);
+
+                reference1.child(userid).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Doctor Add SuccessFully", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+                Users users = new Users(userid, Fullname, Phone, Email,"Doctor123", myUri,2);
+
+                reference.child(userid).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Doctor Add SuccessFully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(AddDoctor.this,DoctorList.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                });
+            }
+        });
+
+
+
+//        reference.child(DoctorId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if(task.isSuccessful()){
+//                    Toast.makeText(getApplicationContext(), "Doctor Add SuccessFully", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(AddDoctor.this,DoctorList.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                else {
+//                    Toast.makeText(AddDoctor.this, "Add Doctor Failed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+
+
+    }
+
     private void UpdateProfileImg(){
         if(profileUri != null){
             FirebaseStorage storage = FirebaseStorage.getInstance();
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String DoctorId = reference.push().getKey();
             StorageReference storageRef = storage.getReference();
-            StorageReference imagesRef = storageRef.child("DoctorProfile");
+            StorageReference imagesRef = storageRef.child("Images");
             StorageReference imageFileRef = imagesRef.child(DoctorId+".jpg");
 
             UploadTask uploadTask = imageFileRef.putFile(profileUri);
@@ -140,65 +228,11 @@ public class AddDoctor extends AppCompatActivity {
                     if(task.isSuccessful()){
                         Uri dawnloadUri =  task.getResult();
                         myUri = dawnloadUri.toString();
-
-                        HashMap<String,Object> hashMap = new HashMap<>();
-                        hashMap.put("profileUrl",myUri);
-                        reference = FirebaseDatabase.getInstance().getReference("Doctor");
-                        reference.updateChildren(hashMap);
-
                         Toast.makeText(AddDoctor.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
-
         }
-
-    }
-
-    public void AddDoctorOnClickButton(View view) {
-        String ProfileUrl = doctorProfile.toString();
-        String Fullname = fullname.getEditText().getText().toString();
-        String Specialist = specialist.getEditText().getText().toString();
-        String Describations =Describation.getEditText().getText().toString();
-        String Phone = phone.getEditText().getText().toString();
-        String Location = location.getEditText().getText().toString();
-        String City = city.getEditText().getText().toString();
-        String State = state.getEditText().getText().toString();
-        String Pincode = pincode.getEditText().getText().toString();
-        String Fees = fees.getEditText().getText().toString();
-        String Schedule =schedule.getEditText().getText().toString();
-
-//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().
-         String DoctorId = reference.push().getKey();
-        //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        HashMap<String,String> hashMap = new HashMap<>();
-        hashMap.put("id",DoctorId);
-        hashMap.put("Fullname",Fullname);
-        hashMap.put("Specialist",Specialist);
-        hashMap.put("Describation",Describations);
-        hashMap.put("PhoneNumber",Phone);
-        hashMap.put("Location",Location);
-        hashMap.put("City",City);
-        hashMap.put("State",State);
-        hashMap.put("Pincode",Pincode);
-        hashMap.put("Fees",Fees);
-        hashMap.put("Schedule",Schedule);
-        hashMap.put("profileUrl",myUri);
-
-        reference.child(DoctorId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(AddDoctor.this, "Doctor Added", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(AddDoctor.this, "Add Doctor Failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
 
     }
 

@@ -28,7 +28,7 @@
             android:textColor="@color/bgcolor"
             android:textSize="20dp" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/DDImg"
             android:layout_width="match_parent"
             android:layout_height="140dp"

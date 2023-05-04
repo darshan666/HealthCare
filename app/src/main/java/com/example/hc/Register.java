@@ -114,10 +114,10 @@ public class Register extends AppCompatActivity {
                                                         if(task.isSuccessful())
                                                         {
                                                             Toast.makeText(getApplicationContext(), "Register SuccessFully", Toast.LENGTH_SHORT).show();
-//                                                            Intent intent = new Intent(getApplicationContext(),Home.class);
-//                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                                            startActivity(intent);
-//                                                            finish();
+                                                            Intent intent = new Intent(getApplicationContext(),Home.class);
+                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                            startActivity(intent);
+                                                            finish();
                                                         }
                                                     }
                                                 });

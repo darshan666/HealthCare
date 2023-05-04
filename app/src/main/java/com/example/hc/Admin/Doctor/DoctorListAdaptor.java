@@ -61,6 +61,8 @@ public  class DoctorListAdaptor extends RecyclerView.Adapter<DoctorListAdaptor.M
                 intent.putExtra("City",doctorData.getCity());
                 intent.putExtra("State",doctorData.getState());
                 intent.putExtra("Schedule",doctorData.getSchedule());
+                intent.putExtra("Pincode",doctorData.getPincode());
+                intent.putExtra("PhoneNumber",doctorData.getPhone());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

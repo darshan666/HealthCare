@@ -1,8 +1,10 @@
 package com.example.hc.Admin.Doctor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -14,8 +16,11 @@ import android.widget.Toast;
 import com.example.hc.Model.*;
 import com.example.hc.R;
 import com.example.hc.profile.UpdateProfile;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,9 +32,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -41,6 +49,7 @@ public class EditDoctor extends AppCompatActivity {
     private DatabaseReference reference;
     private Uri imageUri;
     private String myUri="";
+    String docId,docImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +57,7 @@ public class EditDoctor extends AppCompatActivity {
 
         doctorProfile = findViewById(R.id.EdDoctorProfile);
         fullname = findViewById(R.id.EdFullname);
-        specialist = findViewById(R.id.Edschedule);
+        specialist = findViewById(R.id.EdSpecialist);
         Describation = findViewById(R.id.EdDescription);
         phone = findViewById(R.id.EdPhono);
         location = findViewById(R.id.EdAddress);
@@ -59,11 +68,40 @@ public class EditDoctor extends AppCompatActivity {
         schedule = findViewById(R.id.Edschedule);
         editDoctor = findViewById(R.id.editDoctor);
 
+        doctorProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,33);
+            }
+        });
+
+
+
+        docId = getIntent().getStringExtra("docId");
+        docImg = getIntent().getStringExtra("docImg");
+        Picasso.get().load(getIntent().getStringExtra("docImg")).into(doctorProfile);
+        fullname.getEditText().setText(getIntent().getStringExtra("DocName"));
+        specialist.getEditText().setText(getIntent().getStringExtra("DocSpecialist"));
+        Describation.getEditText().setText(getIntent().getStringExtra("DocDes"));
+        phone.getEditText().setText(getIntent().getStringExtra("DocPhone"));
+        location.getEditText().setText(getIntent().getStringExtra("DocLocation"));
+        city.getEditText().setText(getIntent().getStringExtra("DocCity"));
+        state.getEditText().setText(getIntent().getStringExtra("DocState"));
+        pincode.getEditText().setText(getIntent().getStringExtra("DocPincode"));
+        fees.getEditText().setText(getIntent().getStringExtra("DocAptFees"));
+        schedule.getEditText().setText(getIntent().getStringExtra("DocSchedule"));
+
+
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Doctor");
 
-        storageRef = FirebaseStorage.getInstance().getReference("Images/"+user.getUid()+".jpg");
+        storageRef = FirebaseStorage.getInstance().getReference("DoctorProfile/"+docId+".jpg");
         try {
             File localFile = File.createTempFile("tempImg",".jpg");
 
@@ -85,51 +123,121 @@ public class EditDoctor extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        editDoctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Fullname = fullname.getEditText().getText().toString();
+                String Specialist = specialist.getEditText().getText().toString();
+                String Des =Describation.getEditText().getText().toString();
+                String Phone = phone.getEditText().getText().toString();
+                String Location = location.getEditText().getText().toString();
+                String City = city.getEditText().getText().toString();
+                String State = state.getEditText().getText().toString();
+                String Pincode = pincode.getEditText().getText().toString();
+                String AptFees = fees.getEditText().getText().toString();
+                String Schedule =schedule.getEditText().getText().toString();
 
-        String DoctorId = reference.push().getKey();
-        String uid = user.getUid();
-        reference = FirebaseDatabase.getInstance().getReference("Doctor");
-        reference.child(uid)
-                .addValueEventListener(new ValueEventListener() {
-                    String Fullname,Specialist,Description,Phone,Location,City,State,Pincode,Fees,Schedule;
+                if(imageUri != null){
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot KeyId:snapshot.getChildren()){
+                HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("id",docId);
+                hashMap.put("Fullname",Fullname);
+                hashMap.put("Specialist",Specialist);
+                hashMap.put("Describation",Des);
+                hashMap.put("PhoneNumber",Phone);
+                hashMap.put("Location",Location);
+                hashMap.put("City",City);
+                hashMap.put("State",State);
+                hashMap.put("Pincode",Pincode);
+                hashMap.put("Fees",AptFees);
+                hashMap.put("Schedule",Schedule);
+                hashMap.put("profileUrl",myUri);
 
-                            Doctor snapshot1 = snapshot.getValue(Doctor.class);
+                reference.child(docId).updateChildren(hashMap);
+                Intent intent = new Intent(EditDoctor.this,DoctorList.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(EditDoctor.this, "Doctor Updated", Toast.LENGTH_SHORT).show();
+            } else {
+                    HashMap<String,Object> hashMap = new HashMap<>();
+                    hashMap.put("id",docId);
+                    hashMap.put("Fullname",Fullname);
+                    hashMap.put("Specialist",Specialist);
+                    hashMap.put("Describation",Des);
+                    hashMap.put("PhoneNumber",Phone);
+                    hashMap.put("Location",Location);
+                    hashMap.put("City",City);
+                    hashMap.put("State",State);
+                    hashMap.put("Pincode",Pincode);
+                    hashMap.put("Fees",AptFees);
+                    hashMap.put("Schedule",Schedule);
+                    hashMap.put("profileUrl",docImg);
 
-                            Fullname = snapshot1.getFullname().toString();
-                            Specialist = snapshot1.getSpecialist().toString();
-                            Description = snapshot1.getDescription().toString();
-                            Phone = snapshot1.getPhone().toString();
-                            Location = snapshot1.getLocation().toString();
-                            City = snapshot1.getCity().toString();
-                            State = snapshot1.getState().toString();
-                            Pincode = snapshot1.getPincode().toString();
-                            Fees = snapshot1.getFees().toString();
-                            Schedule = snapshot1.getSchedule().toString();
-                        }
-                        fullname.getEditText().setText(Fullname);
-                        specialist.getEditText().setText(Specialist);
-                        Describation.getEditText().setText(Description);
-                        phone.getEditText().setText(Phone);
-                        location.getEditText().setText(Location);
-                        city.getEditText().setText(City);
-                        state.getEditText().setText(State);
-                        pincode.getEditText().setText(Pincode);
-                        fees.getEditText().setText(Fees);
-                        schedule.getEditText().setText(Schedule);
+                    reference.child(docId).updateChildren(hashMap);
+                    Intent intent = new Intent(EditDoctor.this,DoctorList.class);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(EditDoctor.this, "Doctor Updated", Toast.LENGTH_SHORT).show();
 
-                    }
+                }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(EditDoctor.this, "Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            }
+        });
+
+    }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data.getData() != null){
+            imageUri = data.getData();
+            doctorProfile.setImageURI(imageUri);
+            UpdateProfileImg();
+
+        }
     }
 
-    public void EditDoctorOnClickButton(View view) {
+    private void UpdateProfileImg() {
+        if(imageUri != null){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//            String DoctorId = reference.push().getKey();
+            StorageReference storageRef = storage.getReference();
+            StorageReference imagesRef = storageRef.child("DoctorProfile");
+            StorageReference imageFileRef = imagesRef.child(docId+".jpg");
+
+            UploadTask uploadTask = imageFileRef.putFile(imageUri);
+
+            uploadTask.continueWithTask(new Continuation() {
+                @Override
+                public Object then(@NonNull Task task) throws Exception{
+                    if (!task.isSuccessful()){
+                        throw task.getException();
+                    }
+                    return imageFileRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if(task.isSuccessful()){
+                        Uri dawnloadUri =  task.getResult();
+                        myUri = dawnloadUri.toString();
+
+//                        HashMap<String,Object> hashMap = new HashMap<>();
+//                        hashMap.put("profileUrl",myUri);
+//                        reference = FirebaseDatabase.getInstance().getReference("Doctor");
+//                        reference.updateChildren(hashMap);
+
+                        Toast.makeText(EditDoctor.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        HashMap<String,Object> hashMap = new HashMap<>();
+                        hashMap.put("profileUrl",docImg);
+                        reference.updateChildren(hashMap);
+                    }
+                }
+            });
+
+
+        }
+
     }
 }

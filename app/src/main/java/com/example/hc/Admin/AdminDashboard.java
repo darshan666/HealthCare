@@ -1,3 +1,4 @@
+
 package com.example.hc.Admin;
 import com.example.hc.appointment.*;
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.example.hc.Admin.Doctor.*;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.example.hc.Admin.AdminProfile.*;
+import com.example.hc.Admin.Payment.*;
 
 public class AdminDashboard extends AppCompatActivity {
     BottomNavigationView nav;
@@ -42,7 +45,7 @@ public class AdminDashboard extends AppCompatActivity {
 
                         Intent intent1 = new Intent(getApplicationContext(), DoctorList.class);
                         startActivity(intent1);
-                        //finish();
+//                        finish();
 
                         Toast.makeText(AdminDashboard.this, "Search Page", Toast.LENGTH_SHORT).show();
                         break;
@@ -56,7 +59,7 @@ public class AdminDashboard extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent3 = new Intent(getApplicationContext(), AdminDashboard.class);
+                        Intent intent3 = new Intent(getApplicationContext(), AdminProfile.class);
                         startActivity(intent3);
 
                         Toast.makeText(AdminDashboard.this, "Profile Page", Toast.LENGTH_SHORT).show();
@@ -108,7 +111,7 @@ public class AdminDashboard extends AppCompatActivity {
 
     public void PaymentOnClick(View view) {
         Toast.makeText(this, "Payment page", Toast.LENGTH_SHORT).show();
-        Intent intent5 = new Intent(AdminDashboard.this, AddDoctor.class);
+        Intent intent5 = new Intent(AdminDashboard.this, PaymentList.class);
         startActivity(intent5);
         finish();
     }

@@ -88,7 +88,7 @@ public class Rozarpay_Payment extends AppCompatActivity implements PaymentResult
             final AtomicInteger count = new AtomicInteger(0);
             Integer Id = count.incrementAndGet();
 
-            PaymentModel paymentModel = new PaymentModel(s,patientId,aptId, currentDate.toString(),"Online",Amount,"SuccessFull");
+            PaymentModel paymentModel = new PaymentModel(s,patientId,aptId, currentDate.toLocaleString(),"Online",Amount,"SuccessFull");
 
             reference.child(s).setValue(paymentModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

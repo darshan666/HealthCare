@@ -185,9 +185,10 @@ public class BookAppointment extends AppCompatActivity {
                     hashMap.put("AppointmentReason",AppointmentReason);
                     hashMap.put("AppointmentDate",AppointmentDates);
                     hashMap.put("AppointmentTime",AppointmentTimes);
+                    hashMap.put("userId",userid);
 
 
-                    reference.child(userid).child(String.valueOf(AppointmentId)).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    reference.child(AppointmentId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

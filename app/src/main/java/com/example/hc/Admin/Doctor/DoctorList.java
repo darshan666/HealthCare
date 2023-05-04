@@ -68,7 +68,7 @@ public  class DoctorList extends AppCompatActivity  {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 doctorListDataArrayList.clear();
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    String docId=postSnapshot.child("Id").getValue(String.class);
+                    String docId=postSnapshot.child("id").getValue(String.class);
                     String name=postSnapshot.child("Fullname").getValue(String.class);
                     String city=postSnapshot.child("City").getValue(String.class);
                     String desc=postSnapshot.child("Describation").getValue(String.class);

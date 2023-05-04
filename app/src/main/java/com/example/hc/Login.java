@@ -26,6 +26,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.example.hc.Doctor.*;
 
 public class Login extends AppCompatActivity {
     Button forgetPassword,login,register;
@@ -52,17 +53,19 @@ public class Login extends AppCompatActivity {
                         finish();
 
                     }
-                    else if(usertype ==0){
+
+                    if(usertype ==0){
                         Toast.makeText(Login.this, "User Login Successfully.",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this,Home.class);
                         startActivity(intent);
                         finish();
                     }
-                    else
-                    {
-                        Toast.makeText(Login.this, "User Does not exists!.",Toast.LENGTH_SHORT).show();
+                    if(usertype == 2){
+                        Toast.makeText(Login.this, "Doctor Login Successfully.",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Login.this,DoctorDashboard.class);
+                        startActivity(intent);
+                        finish();
                     }
-
                 }
 
                 @Override
@@ -71,9 +74,6 @@ public class Login extends AppCompatActivity {
                 }
             });
 
-            Intent intent = new Intent(Login.this, Home.class);
-            startActivity(intent);
-            finish();
         }
     }
     @Override
@@ -165,7 +165,17 @@ public class Login extends AppCompatActivity {
                                         Intent intent = new Intent(Login.this,AdminDashboard.class);
                                         startActivity(intent);
                                         finish();
+                                    }
+                                    if(usertype == 2){
+                                        Toast.makeText(Login.this, "Doctor Login Successfully.",Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Login.this,DoctorDashboard.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
 
+                                    else
+                                    {
+                                        Toast.makeText(Login.this, "User Does not exists!.",Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
@@ -174,23 +184,7 @@ public class Login extends AppCompatActivity {
 
                                 }
                             });
-                            // Sign in success, update UI with the signed-in user's information
-//                            Toast.makeText(Login.this, "Login Successfully.",Toast.LENGTH_SHORT).show();
-//
-//                            Intent intent = new Intent(getApplicationContext(),Home.class);
-//                            startActivity(intent);
-//                            finish();
-
-                           // FirebaseUser user = firebaseAuth.getCurrentUser();
-
                         }
-//                        else {
-//                            // If sign in fails, display a message to the user.
-//
-//                            Toast.makeText(Login.this, "Authentication failed.",
-//                                    Toast.LENGTH_SHORT).show();
-//
-//                        }
                     }
                 });
     }

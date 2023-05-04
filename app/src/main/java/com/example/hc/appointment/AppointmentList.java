@@ -47,7 +47,7 @@ public class AppointmentList extends AppCompatActivity implements AppointmentAda
 
         auth = FirebaseAuth.getInstance();
         recyclerView = findViewById(R.id.rvAppointment);
-        reference = FirebaseDatabase.getInstance().getReference("Appointments").child(auth.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("Appointments");
         AptListDataArrayList = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         appointmentAdapter = new AppointmentAdapter(AptListDataArrayList,this,this);
