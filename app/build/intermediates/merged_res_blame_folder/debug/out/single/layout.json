@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\activity_chat.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\activity_chat.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\activity_sign_up.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\activity_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\appointment_page.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\appointment_page.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\login.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\login.xml"
+    },
+    {
+        "merged": "com.example.hc.app-mergeDebugResources-37:/layout/activity_sign_in.xml",
+        "source": "com.example.hc.app-main-40:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\register.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\register.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\activity_main.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\activity_alltask.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\activity_alltask.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\forget_password.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\forget_password.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\item_container_received_message.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\item_container_received_message.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\item_container_sent_message.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\item_container_sent_message.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\profile_page.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\profile_page.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\home.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\home.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\activity_sign_in.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\activity_sign_in.xml"
+    },
+    {
+        "merged": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-mergeDebugResources-37:\\layout\\search_page.xml",
+        "source": "C:\\Program Files\\Android\\gradle-7.4\\daemon\\7.3.3\\com.example.hc.app-main-40:\\layout\\search_page.xml"
+    }
+]
